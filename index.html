@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #fff0f5;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .heart-button {
+      font-size: 4rem;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      margin-top: 20vh;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    section {
+      display: none;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .show {
+      display: block;
+    }
+    .quiz-question {
+      margin: 20px 0;
+    }
+    .memory-gallery img {
+      width: 90%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin: 10px auto;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="start">
+    <div class="heart-button" onclick="nextSection(1)">❤️</div>
+    <p>Clique no coração para começar nossa história</p>
+  </div>
+
+  <section id="section1">
+    <h2>Nossa Linha do Tempo</h2>
+    <p>Inicio do Namoro: 8 de Março de 2023</p>
+    <p>Primeira Beijo: 3 de Julho 2022</p>
+    <p>Nosso primeiro 'eu te amo': Março de 2023</p>
+    <button onclick="nextSection(2)">Próximo</button>
+  </section>
+
+  <section id="section2">
+    <h2>Quiz do Amor 💌</h2>
+    <div class="quiz-question">
+      <p>Qual foi o nosso primeiro filme juntos?</p>
+      <button onclick="alert('Acertou! Foi Encanto 💖')">Invocação do Mal</button>
+      <button onclick="alert('Hmm quase!')">Vingadores</button>
+    </div>
+    <div class="quiz-question">
+      <p>Qual é a minha comida favorita que você faz?</p>
+      <button onclick="alert('Siiiim! A lasanha maravilhosa 😍')">Lasanha</button>
+      <button onclick="alert('AMO AMO!')">Strogonoff de Mor</button>
+    </div>
+    <button onclick="nextSection(3)">Próximo</button>
+  </section>
+
+  <section id="section3">
+    <h2>Carta Para Você</h2>
+    <p id="carta"></p>
+    <button onclick="nextSection(4)">Próximo</button>
+  </section>
+
+  <section id="section4">
+    <h2>Galeria de Memórias 📸</h2>
+    <div class="memory-gallery">
+      <img src="foto1.jpg" alt="Foto nossa 1">
+      <img src="foto2.jpg" alt="Foto nossa 2">
+      <img src="foto3.jpg" alt="Foto nossa 3">
+      <img src="foto4.jpg" alt="Foto nossa 4">
+      <img src="foto5.jpg" alt="Foto nossa 5">
+      <img src="foto6.jpg" alt="Foto nossa 6">
+      <img src="foto8.jpg" alt="Foto nossa 8">
+    </div>
+    <button onclick="nextSection(5)">Final</button>
+  </section>
+
+  <section id="section5">
+    <h2>Surpresa Final 🎁</h2>
+    <p>Você é o maior presente da minha vida, mas clique abaixo para ver um mimo só seu!</p>
+    <button onclick="window.location.href='https://www.youtube.com/watch?v=-YzDsDMYqdw&pp=0gcJCd4JAYcqIYzv'">Abrir Presente</button>
+  </section>
+
+  <script>
+    let carta = "Desde o momento em que te conheci, minha vida mudou por completo. Cada risada, cada abraço e cada beijo construiu essa história linda que temos juntos. Você é minha inspiração, meu porto seguro e o grande amor da minha vida. Obrigado por ser quem você é. Eu te amo infinitamente.";
+
+    let cartaIndex = 0;
+    function digitarCarta() {
+      const cartaElemento = document.getElementById("carta");
+      if (cartaIndex < carta.length) {
+        cartaElemento.innerHTML += carta.charAt(cartaIndex);
+        cartaIndex++;
+        setTimeout(digitarCarta, 50);
+      }
+    }
+
+    function nextSection(id) {
+      document.getElementById("start").style.display = 'none';
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById("section" + i).classList.remove("show");
+      }
+      const section = document.getElementById("section" + id);
+      section.classList.add("show");
+      if (id === 3) digitarCarta();
+    }
+  </script>
+</body>
+</html>
